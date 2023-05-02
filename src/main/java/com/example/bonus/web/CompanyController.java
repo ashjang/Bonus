@@ -1,33 +1,33 @@
 package com.example.bonus.web;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+
+@RestController
+@RequestMapping("/company")
 public class CompanyController {
 
     // 회사이름으로 배당금 검색 자동완성 API
-    @GetMapping("/company/autocomplete")
+    @GetMapping("/autocomplete")
     public ResponseEntity<?> autoComplete(@RequestParam String keyword) {
         return null;
     }
 
     // 회사 리스트 조회 API
-    @GetMapping("/company")
+    @GetMapping
     public ResponseEntity<?> searchCompany() {
         return null;
     }
 
     // 배당금 저장 API
-    @PostMapping("/company")
+    @PostMapping
     public ResponseEntity<?> addCompany() {
         return null;
     }
 
     // 배당금 삭제 API
-    @DeleteMapping("/company")
+    @DeleteMapping
     public ResponseEntity<?> deleteCompany() {
         return null;
     }
