@@ -1,5 +1,5 @@
 ### 자동완성 조회 기능
-GET http://localhost:8080/company/autocomplete?keyword=A
+GET http://localhost:8080/company/autocomplete?keyword
 Accept: application/json
 
 ###

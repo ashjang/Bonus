@@ -21,7 +21,8 @@ public class CompanyController {
     // 회사이름으로 배당금 검색 자동완성 API
     @GetMapping("/autocomplete")
     public ResponseEntity<?> autoComplete(@RequestParam String keyword) {
-        var result = this.companyService.autoComplete(keyword);
+        var result = this.companyService.getCompanyNamesByKeyword(keyword);         // LIKE
+//        var result = this.companyService.autoComplete(keyword);         // Trie
         return ResponseEntity.ok(result);
     }
 
