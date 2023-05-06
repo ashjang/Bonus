@@ -8,7 +8,7 @@ POST http://localhost:8080/company
 Content-Type: application/json
 
 {
-  "ticker": "AAPL"
+  "ticker": "MMM"
 }
 
 ###
@@ -18,7 +18,7 @@ Accept: application/json
 
 ###
 ### 특정 회사 배당금 조회
-GET http://localhost:8080/finance/dividend/MMM
+GET http://localhost:8080/finance/dividend/3M Company
 Accept: application/json
 
 
