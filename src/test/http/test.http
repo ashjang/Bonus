@@ -1,9 +1,14 @@
+### 자동완성 조회 기능
+GET http://localhost:8080/company/autocomplete?keyword=A
+Accept: application/json
+
+###
 ### 배당금 저장
 POST http://localhost:8080/company
 Content-Type: application/json
 
 {
-  "ticker": "MMM"
+  "ticker": "AAPL"
 }
 
 ###

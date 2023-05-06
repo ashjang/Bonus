@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/company")
@@ -22,7 +21,8 @@ public class CompanyController {
     // 회사이름으로 배당금 검색 자동완성 API
     @GetMapping("/autocomplete")
     public ResponseEntity<?> autoComplete(@RequestParam String keyword) {
-        return null;
+        var result = this.companyService.autoComplete(keyword);
+        return ResponseEntity.ok(result);
     }
 
     // 회사 리스트 조회 API
@@ -41,6 +41,7 @@ public class CompanyController {
         }
 
         Company company = this.companyService.save(ticker);
+        this.companyService.addAutoCompleteKeyword(company.getName());
 
         return ResponseEntity.ok(company);
     }
