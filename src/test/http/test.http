@@ -1,0 +1,19 @@
+### 배당금 저장
+POST http://localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "MMM"
+}
+
+###
+### 회사 조회
+GET http://localhost:8080/company
+Accept: application/json
+
+###
+### 특정 회사 배당금 조회
+GET http://localhost:8080/finance/dividend/MMM
+Accept: application/json
+
+
