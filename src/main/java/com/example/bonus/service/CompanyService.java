@@ -7,8 +7,9 @@ import com.example.bonus.persist.DividendRepository;
 import com.example.bonus.persist.entity.CompanyEntity;
 import com.example.bonus.persist.entity.DividendEntity;
 import com.example.bonus.scraper.Scraper;
-import com.example.bonus.scraper.YahooFinanceScraper;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -53,5 +54,10 @@ public class CompanyService {
         this.dividendRepository.saveAll(dividendEntityList);
 
         return company;
+    }
+
+    // 모든 회사 가져오기
+    public Page<CompanyEntity> getAllCompany(Pageable pageable) {
+        return this.companyRepository.findAll(pageable);
     }
 }
