@@ -3,6 +3,7 @@ package com.example.bonus.service;
 import com.example.bonus.model.Company;
 import com.example.bonus.model.Dividend;
 import com.example.bonus.model.ScrapedResult;
+import com.example.bonus.model.constants.CacheKey;
 import com.example.bonus.persist.CompanyRepository;
 import com.example.bonus.persist.DividendRepository;
 import com.example.bonus.persist.entity.CompanyEntity;
@@ -23,7 +24,7 @@ public class FinanceService {
     private final CompanyRepository companyRepository;
     private final DividendRepository dividendRepository;
 
-    @Cacheable(key = "#companyName", value = "finance")
+    @Cacheable(key = "#companyName", value = CacheKey.KEY_FINANCE)
     // 이 메서드는 요청이 자주 들어오고, data가 자주 변경되므로 캐싱
     public ScrapedResult getDividendByCompanyName(String companyName) {
         log.info("search company -> " + companyName);
