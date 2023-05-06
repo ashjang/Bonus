@@ -1,5 +1,6 @@
 package com.example.bonus.persist.entity;
 
+import com.example.bonus.model.Dividend;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -25,4 +26,10 @@ public class DividendEntity {
     private LocalDateTime date;
 
     private String dividend;
+
+    public DividendEntity(Long company_id, Dividend dividend) {
+        this.company_id = company_id;
+        this.date = dividend.getDate();
+        this.dividend = dividend.getDividend();
+    }
 }
