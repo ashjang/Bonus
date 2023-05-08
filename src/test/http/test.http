@@ -1,3 +1,30 @@
+GET http://localhost:8080/company?size=5&page=1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZWxsbyIsInJvbGVzIjpbIlJPTEVfV1JJVEUiXSwiaWF0IjoxNjgzNTUwMjg3LCJleHAiOjE2ODM1NTM4ODd9.CybaYqrMoj21BMzI67XBMjgldDF5JcWG7jIVEGfKr4JG6OPn0GXV426MsvCm-pTUo_WSe299N4lSqZ1gsPU7SQ
+###
+
+
+### 로그인
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "username": "hello",
+  "password": "hello123!@#"
+}
+
+###
+### 회원가입
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "username": "hello",
+  "password": "hello123!@#",
+  "roles": ["ROLE_WRITE"]
+}
+
+###
 ### 자동완성 조회 기능
 GET http://localhost:8080/company/autocomplete?keyword
 Accept: application/json

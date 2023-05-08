@@ -1,11 +1,15 @@
 package com.example.bonus.security;
 
+import com.example.bonus.service.MemberService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -18,6 +22,8 @@ public class TokenProvider {
 
     private static final String KEY_ROLES = "roles";
     private static final long TOKEN_EXPIRE_TIME = 1000 * 60 * 60;       // 한 시간
+
+    private final MemberService memberService;
 
     @Value("{spring.jwt.secret}")
     private String secretKey;
@@ -50,6 +56,7 @@ public class TokenProvider {
         return this.parseClaims(token).getSubject();
     }
 
+    // 토큰의 유효성
     public boolean validateToken(String token) {
         // token이 빈 값일 때
         if (!StringUtils.hasText(token)) return false;
@@ -66,5 +73,12 @@ public class TokenProvider {
         } catch (ExpiredJwtException e) {
             return e.getClaims();
         }
+    }
+
+    // jwt token으로부터 인증정보를 가져오는
+    public Authentication getAuthentication(String jwt) {
+        UserDetails userDetails = this.memberService.loadUserByUsername(this.getUsername(jwt));
+        return new UsernamePasswordAuthenticationToken(
+                userDetails, "", userDetails.getAuthorities());
     }
 }

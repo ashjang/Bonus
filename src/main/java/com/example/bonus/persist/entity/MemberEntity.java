@@ -28,6 +28,7 @@ public class MemberEntity implements UserDetails {
     private String password;
 
     // 권한이 관리자일 수도, 사용자일 수도 있기 때문에 List
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
     @Override
