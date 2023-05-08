@@ -1,5 +1,6 @@
 package com.example.bonus.persist.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,6 +26,7 @@ public class MemberEntity implements UserDetails {
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     // 권한이 관리자일 수도, 사용자일 수도 있기 때문에 List
@@ -32,6 +34,7 @@ public class MemberEntity implements UserDetails {
     private List<String> roles;
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles.stream()
                 .map(SimpleGrantedAuthority::new)
@@ -56,5 +59,15 @@ public class MemberEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return false;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
     }
 }

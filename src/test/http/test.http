@@ -1,7 +1,3 @@
-GET http://localhost:8080/company?size=5&page=1
-Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZWxsbyIsInJvbGVzIjpbIlJPTEVfV1JJVEUiXSwiaWF0IjoxNjgzNTUwMjg3LCJleHAiOjE2ODM1NTM4ODd9.CybaYqrMoj21BMzI67XBMjgldDF5JcWG7jIVEGfKr4JG6OPn0GXV426MsvCm-pTUo_WSe299N4lSqZ1gsPU7SQ
-###
 
 
 ### 로그인
@@ -9,8 +5,8 @@ POST http://localhost:8080/auth/signin
 Content-Type: application/json
 
 {
-  "username": "hello",
-  "password": "hello123!@#"
+  "username": "grace",
+  "password": "grace"
 }
 
 ###
@@ -19,9 +15,9 @@ POST http://localhost:8080/auth/signup
 Content-Type: application/json
 
 {
-  "username": "hello",
-  "password": "hello123!@#",
-  "roles": ["ROLE_WRITE"]
+  "username": "grace",
+  "password": "grace",
+  "roles": ["ROLE_WRITE", "ROLE_READ"]
 }
 
 ###
@@ -33,9 +29,10 @@ Accept: application/json
 ### 배당금 저장
 POST http://localhost:8080/company
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfV1JJVEUiLCJST0xFX1JFQUQiXSwiaWF0IjoxNjgzNTU2Nzg0LCJleHAiOjE2ODM1NjAzODR9.j-HoFsW9_55qqzv3bLbUCFWwLBc8Cq5hDHTNzeo1-BoyA_TIlw1B1Q4j2UY1S6g8_tLUoniERu6EEQFuV6FKBw
 
 {
-  "ticker": "MMM"
+  "ticker": "O"
 }
 
 ###
@@ -48,4 +45,6 @@ Accept: application/json
 GET http://localhost:8080/finance/dividend/3M Company
 Accept: application/json
 
-
+### 회사 삭제
+DELETE http://localhost:8080/company/MMM
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfV1JJVEUiLCJST0xFX1JFQUQiXSwiaWF0IjoxNjgzNTU2Nzg0LCJleHAiOjE2ODM1NjAzODR9.j-HoFsW9_55qqzv3bLbUCFWwLBc8Cq5hDHTNzeo1-BoyA_TIlw1B1Q4j2UY1S6g8_tLUoniERu6EEQFuV6FKBw

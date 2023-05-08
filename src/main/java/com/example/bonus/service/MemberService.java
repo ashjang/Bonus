@@ -45,6 +45,8 @@ public class MemberService implements UserDetailsService {
 
         if (!this.passwordEncoder.matches(signIn.getPassword(), user.getPassword())) {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+        } else {
+            System.out.println("로그인되었습니다.");
         }
 
         return user;
