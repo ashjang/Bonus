@@ -24,6 +24,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody Auth.SignUp request) {
         var result = this.memberService.register(request);
+        log.info("user signup -> " + request.getUsername());
         return ResponseEntity.ok(result);
     }
 
@@ -34,6 +35,8 @@ public class AuthController {
         var member = this.memberService.authenticate(request);
         // 2. 인증이 됐을 때 토큰생성하여 반환
         var token = this.tokenProvider.generateToken(member.getUsername(), member.getRoles());
+
+        log.info("user login -> " + request.getUsername());
         return ResponseEntity.ok(token);
     }
 }

@@ -62,6 +62,7 @@ public class CompanyController {
         String companyName = this.companyService.deleteCompany(ticker);
         // 캐시에서도 company 지움
         this.clearFinanceCache(companyName);
+
         return ResponseEntity.ok(companyName);
     }
 
