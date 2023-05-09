@@ -29,10 +29,10 @@ Accept: application/json
 ### 배당금 저장
 POST http://localhost:8080/company
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfV1JJVEUiLCJST0xFX1JFQUQiXSwiaWF0IjoxNjgzNTU2Nzg0LCJleHAiOjE2ODM1NjAzODR9.j-HoFsW9_55qqzv3bLbUCFWwLBc8Cq5hDHTNzeo1-BoyA_TIlw1B1Q4j2UY1S6g8_tLUoniERu6EEQFuV6FKBw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfV1JJVEUiLCJST0xFX1JFQUQiXSwiaWF0IjoxNjgzNjIyNTgyLCJleHAiOjE2ODM2MjYxODJ9.wzZry6P9IZmR-13alEY49IL6DGbRKGg-wAGPentJaFXqdTZBqlxDHdlZwCdfbJN7QgX4Xx3MAbYzrenfzYzrTw
 
 {
-  "ticker": "O"
+  "ticker": "MMM"
 }
 
 ###
@@ -42,8 +42,9 @@ Accept: application/json
 
 ###
 ### 특정 회사 배당금 조회
-GET http://localhost:8080/finance/dividend/3M Company
+GET http://localhost:8080/finance/dividend/3M C
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfV1JJVEUiLCJST0xFX1JFQUQiXSwiaWF0IjoxNjgzNjIyNTgyLCJleHAiOjE2ODM2MjYxODJ9.wzZry6P9IZmR-13alEY49IL6DGbRKGg-wAGPentJaFXqdTZBqlxDHdlZwCdfbJN7QgX4Xx3MAbYzrenfzYzrTw
 
 ### 회사 삭제
 DELETE http://localhost:8080/company/MMM

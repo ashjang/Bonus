@@ -26,13 +26,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        System.out.println("SecurityConfiguration.authenticationManagerBean()");
         return super.authenticationManagerBean();
     }
 
     @Override
     public void configure(final WebSecurity web) throws Exception {
-        System.out.println("SecurityConfiguration.config()");
         // h2-console/~ 에서는 인증정보 없이 자유롭게 접근
         web.ignoring()
                 .antMatchers("/h2-console/**");
@@ -40,7 +38,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println("SecurityConfiguration.configure()");
         // signup, signin은 토큰 없이 접근이 가능하도록
         http
                 // REST API로 jwt 토큰으로 인증방식으로 구현할 때 붙여줘야하는 것

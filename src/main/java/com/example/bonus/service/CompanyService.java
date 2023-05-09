@@ -1,5 +1,6 @@
 package com.example.bonus.service;
 
+import com.example.bonus.exception.impl.NoCompanyException;
 import com.example.bonus.model.Company;
 import com.example.bonus.model.ScrapedResult;
 import com.example.bonus.persist.CompanyRepository;
@@ -84,7 +85,7 @@ public class CompanyService {
 
     public String deleteCompany(String ticker) {
         var company = this.companyRepository.findByTicker(ticker)
-                                    .orElseThrow(() -> new RuntimeException("존재하지 않는 회사입니다."));
+                                    .orElseThrow(() -> new NoCompanyException());
         this.dividendRepository.deleteAllByCompanyId(company.getId());
         this.companyRepository.delete(company);
 

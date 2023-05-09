@@ -29,7 +29,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     // req에 token이 존재하면 그 token이 유효한지
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("doFilterInternal");
         String token = this.resolveTokenFromRequest(request);
 
         if (StringUtils.hasText(token) && this.tokenProvider.validateToken(token)) {
@@ -45,7 +44,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     // request에서 token만 꺼내기
     private String resolveTokenFromRequest(HttpServletRequest request) {
-        System.out.println("resolveTokenFromRequest");
         String token = request.getHeader(TOKEN_HEADER);
 
         if (!ObjectUtils.isEmpty(token) && token.startsWith(TOKEN_PREFIX)) {
